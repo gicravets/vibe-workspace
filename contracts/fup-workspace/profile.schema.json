@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:fup:workspace:profile:1",
+  "title": "FUP workspace profile review candidate (not authorization)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "execution_enabled", "profile_id", "revision", "project_uid", "repository_uid", "root_binding", "client", "entrypoints", "knowledge_pins", "requirements", "journal"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "status": {"const": "candidate"},
+    "execution_enabled": {"const": false},
+    "profile_id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]{0,95}$"},
+    "revision": {"type": "integer", "minimum": 1},
+    "project_uid": {"$ref": "#/$defs/project_uid"},
+    "repository_uid": {"type": "string", "pattern": "^FUP-REPOSITORY-[0-9a-f-]{36}$"},
+    "root_binding": {"const": "registered_repository_root"},
+    "client": {"enum": ["codex", "openclaw", "claude"]},
+    "entrypoints": {
+      "type": "array", "minItems": 1, "maxItems": 8, "uniqueItems": true,
+      "items": {"type": "string", "enum": ["AGENTS.md", "CLAUDE.md", "AI/README.md"]}
+    },
+    "knowledge_pins": {"type": "array", "minItems": 1, "maxItems": 64, "items": {"$ref": "#/$defs/pin"}},
+    "requirements": {
+      "type": "object", "additionalProperties": false,
+      "required": ["online_authorization", "human_only_grant_activation", "plan_before_apply", "cas_user_files", "preserve_dirty_state", "no_global_config_overwrite", "no_raw_git_command", "sdk_single_writer", "no_secrets_in_profile"],
+      "properties": {
+        "online_authorization": {"const": true},
+        "human_only_grant_activation": {"const": true},
+        "plan_before_apply": {"const": true},
+        "cas_user_files": {"const": true},
+        "preserve_dirty_state": {"const": true},
+        "no_global_config_overwrite": {"const": true},
+        "no_raw_git_command": {"const": true},
+        "sdk_single_writer": {"const": true},
+        "no_secrets_in_profile": {"const": true}
+      }
+    },
+    "journal": {
+      "type": "object", "additionalProperties": false,
+      "required": ["capture_tool", "identity_source", "retry", "projection_recovery"],
+      "properties": {
+        "capture_tool": {"const": "fup_observation_capture"},
+        "identity_source": {"const": "trusted_host_binding"},
+        "retry": {"const": "same_request_key_and_payload"},
+        "projection_recovery": {"const": "owner_review_no_automatic_repair"}
+      }
+    }
+  },
+  "$defs": {
+    "project_uid": {"type": "string", "pattern": "^FUP-PROJECT-[0-9a-f-]{36}$"},
+    "pin": {
+      "type": "object", "additionalProperties": false,
+      "required": ["scope", "project_uid", "record_uid", "revision", "sha256", "entity_type"],
+      "properties": {
+        "scope": {"enum": ["shared", "project"]},
+        "project_uid": {"$ref": "#/$defs/project_uid"},
+        "record_uid": {"type": "string", "pattern": "^KIT-(DOC|KNO|TERM)-[0-9]{6,}$"},
+        "revision": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "entity_type": {"enum": ["document", "skill", "knowledge", "term"]}
+      }
+    }
+  }
+}

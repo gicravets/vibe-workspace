@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "status": "candidate",
+  "execution_enabled": false,
+  "profile_id": "fup.workspace.fixture",
+  "revision": 1,
+  "project_uid": "FUP-PROJECT-00000000-0000-4000-8000-000000000001",
+  "repository_uid": "FUP-REPOSITORY-00000000-0000-4000-8000-000000000002",
+  "root_binding": "registered_repository_root",
+  "client": "codex",
+  "entrypoints": ["AGENTS.md"],
+  "knowledge_pins": [
+    {
+      "scope": "project",
+      "project_uid": "FUP-PROJECT-00000000-0000-4000-8000-000000000001",
+      "record_uid": "KIT-DOC-000001",
+      "revision": 1,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "entity_type": "skill"
+    }
+  ],
+  "requirements": {
+    "online_authorization": true,
+    "human_only_grant_activation": true,
+    "plan_before_apply": true,
+    "cas_user_files": true,
+    "preserve_dirty_state": true,
+    "no_global_config_overwrite": true,
+    "no_raw_git_command": true,
+    "sdk_single_writer": true,
+    "no_secrets_in_profile": true
+  },
+  "journal": {
+    "capture_tool": "fup_observation_capture",
+    "identity_source": "trusted_host_binding",
+    "retry": "same_request_key_and_payload",
+    "projection_recovery": "owner_review_no_automatic_repair"
+  }
+}

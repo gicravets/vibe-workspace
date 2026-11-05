@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:fup:workspace:observation-request:1",
+  "title": "Review candidate for existing fup_observation_capture arguments; no caller identity in payload",
+  "type": "object", "additionalProperties": false,
+  "required": ["project_uid", "request_key", "title", "question", "observed"],
+  "properties": {
+    "project_uid": {"type": "string", "pattern": "^FUP-PROJECT-[0-9a-f-]{36}$"},
+    "request_key": {"type": "string", "minLength": 1, "maxLength": 128, "pattern": "^\\S(?:[\\s\\S]*\\S)?$"},
+    "title": {"type": "string", "minLength": 1, "maxLength": 300, "pattern": "\\S"},
+    "question": {"type": "string", "minLength": 1, "maxLength": 4000, "pattern": "\\S"},
+    "observed": {"type": "string", "minLength": 1, "maxLength": 12000, "pattern": "\\S"},
+    "assessment": {"enum": ["unreviewed", "helpful", "unhelpful", "unclear", "partial"]},
+    "related_record_uids": {
+      "type": "array", "maxItems": 20, "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^KIT-(OBS|RES|TASK|CHANGE|US|UC|CJM|TC|UI|UX|UAC|TERM|KNO|RUN)-[0-9]{6,}$"}
+    }
+  }
+}

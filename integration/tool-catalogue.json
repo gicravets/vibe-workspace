@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "upstream_commit": "8dc3f8c88f1765c8113041f437c33f83d71d4aec",
+  "state": "source_review_not_execution_admission",
+  "tools": [
+    {
+      "name": "init_workspace",
+      "handler": "src/mcp/handlers/config.rs",
+      "proposed_access_class": "project_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "show_config",
+      "handler": "src/mcp/handlers/config.rs",
+      "proposed_access_class": "project_read",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "init_config",
+      "handler": "src/mcp/handlers/config.rs",
+      "proposed_access_class": "project_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "validate_config",
+      "handler": "src/mcp/handlers/config.rs",
+      "proposed_access_class": "project_read",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "reset_config",
+      "handler": "src/mcp/handlers/config.rs",
+      "proposed_access_class": "destructive_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "backup_config",
+      "handler": "src/mcp/handlers/config.rs",
+      "proposed_access_class": "project_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "restore_config",
+      "handler": "src/mcp/handlers/config.rs",
+      "proposed_access_class": "destructive_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "configure_app",
+      "handler": "src/mcp/handlers/apps.rs",
+      "proposed_access_class": "project_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "show_apps",
+      "handler": "src/mcp/handlers/apps.rs",
+      "proposed_access_class": "project_read",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "list_app_templates",
+      "handler": "src/mcp/handlers/apps.rs",
+      "proposed_access_class": "metadata",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "create_app_template",
+      "handler": "src/mcp/handlers/apps.rs",
+      "proposed_access_class": "project_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "delete_app_template",
+      "handler": "src/mcp/handlers/apps.rs",
+      "proposed_access_class": "destructive_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "update_default_templates",
+      "handler": "src/mcp/handlers/apps.rs",
+      "proposed_access_class": "project_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "launch_repo",
+      "handler": "src/mcp/handlers/repos.rs",
+      "proposed_access_class": "project_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "open_repo",
+      "handler": "src/mcp/handlers/repos.rs",
+      "proposed_access_class": "project_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "clone",
+      "handler": "src/mcp/handlers/repos.rs",
+      "proposed_access_class": "project_network_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "create_repository",
+      "handler": "src/mcp/handlers/repos.rs",
+      "proposed_access_class": "project_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "git_status",
+      "handler": "src/mcp/handlers/git.rs",
+      "proposed_access_class": "project_read",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "scan_repos",
+      "handler": "src/mcp/handlers/git.rs",
+      "proposed_access_class": "project_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "sync_repos",
+      "handler": "src/mcp/handlers/git.rs",
+      "proposed_access_class": "project_network_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "clone_repo",
+      "handler": "src/mcp/handlers/git.rs",
+      "proposed_access_class": "project_network_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "exec_git_command",
+      "handler": "src/mcp/handlers/git.rs",
+      "proposed_access_class": "unrestricted_git_candidate",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "reset_git_config",
+      "handler": "src/mcp/handlers/git.rs",
+      "proposed_access_class": "destructive_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "validate_mcp_interface",
+      "handler": "src/mcp/handlers/validation.rs",
+      "proposed_access_class": "project_read",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "create_worktree",
+      "handler": "src/mcp/handlers/worktree.rs",
+      "proposed_access_class": "project_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "list_worktrees",
+      "handler": "src/mcp/handlers/worktree.rs",
+      "proposed_access_class": "project_read",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "analyze_worktree_conflicts",
+      "handler": "src/mcp/handlers/worktree.rs",
+      "proposed_access_class": "project_read",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "recommend_worktree_cleanup",
+      "handler": "src/mcp/handlers/worktree.rs",
+      "proposed_access_class": "project_read",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "execute_worktree_cleanup",
+      "handler": "src/mcp/handlers/worktree.rs",
+      "proposed_access_class": "destructive_write",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    },
+    {
+      "name": "worktree_help",
+      "handler": "src/mcp/handlers/worktree_help.rs",
+      "proposed_access_class": "metadata",
+      "available_to_shared_gateway": false,
+      "native_permission_verified": false,
+      "review": "typed_adapter_and_independent_acceptance_required"
+    }
+  ]
+}
