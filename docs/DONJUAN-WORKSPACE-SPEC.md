@@ -17,14 +17,19 @@ vibe-workspace (code fork)
 generated workspace/
   docs-repo/
     config/           project routing and repository UID references
-    docs/{docs,docops,docsecops}/
     knowledge-kit/    SDK-managed journals, registry and project entry point
+      docs/          requirements, architecture and decisions
+      docops/        build, delivery and operations
+      docsecops/     access and security
   code-repo/
     src/              selected profile only
     tests/
 ```
 
 ## Wizard contract
+
+This layout applies only to new DonJuan projects. Do not move or rewrite
+existing projects, documentation paths, or CMDB records.
 
 1. Ask for project name, purpose, location and source profile. Show the plan
    before applying it. Reject an existing destination; never rewrite it.
