@@ -17,10 +17,12 @@ vibe-workspace (code fork)
 generated workspace/
   docs-repo/
     config/           project routing and repository UID references
-    knowledge-kit/    SDK-managed journals, registry and project entry point
-      docs/          requirements, architecture and decisions
-      docops/        build, delivery and operations
-      docsecops/     access and security
+    README.md        managed project entry point
+    docs/            requirements, architecture and decisions
+    docops/          build, delivery and operations guides
+    docsecops/       access and security
+    AI/              project knowledge, runbooks and skills
+    knowledge-kit/   SDK journals, registry and local state
   code-repo/
     src/              selected profile only
     tests/
@@ -30,6 +32,9 @@ generated workspace/
 
 This layout applies only to new DonJuan projects. Do not move or rewrite
 existing projects, documentation paths, or CMDB records.
+New projects opt in through documentation.root = "." and the four root
+sections in CMDB. Executable deployment recipes stay in the code repository
+or a dedicated delivery repository; docops links to them.
 
 1. Ask for project name, purpose, location and source profile. Show the plan
    before applying it. Reject an existing destination; never rewrite it.
