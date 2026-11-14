@@ -4,16 +4,18 @@
 // - Currently disabled until intentional dead code is properly annotated with #[allow(dead_code)]
 // - To re-enable: Add RUSTFLAGS="-D warnings" to zigbuild-release and build-release commands
 
-use anyhow::Result;
+use anyhow::{Context, Result};
 use clap::{Parser, Subcommand};
 use console::style;
 use std::path::PathBuf;
 
 mod apps;
 mod cache;
+mod donjuan;
 mod git;
 mod mcp;
 mod output;
+mod project_plan;
 mod repository;
 mod ui;
 mod uri;
@@ -57,6 +59,22 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Commands {
+    /// Run a local DonJuan SDK operation (JSON stdin/stdout, owner CLI only)
+    DonjuanOperation {
+        #[arg(long)]
+        python: PathBuf,
+        #[arg(long)]
+        sdk_root: PathBuf,
+        #[arg(value_enum)]
+        operation: donjuan::Operation,
+    },
+
+    /// Plan local DonJuan project setup without writing files
+    Project {
+        #[command(subcommand)]
+        command: project_plan::ProjectCommand,
+    },
+
     /// Manage app integrations
     Apps {
         #[command(subcommand)]
@@ -1813,6 +1831,24 @@ fn prompt_for_confirmation(message: &str) -> Result<bool> {
 async fn main() -> Result<()> {
     let cli = Cli::parse();
 
+    if let Some(Commands::Project { command }) = &cli.command {
+        return command.run(cli.root.as_deref());
+    }
+
+    if let Some(Commands::DonjuanOperation {
+        python,
+        sdk_root,
+        operation,
+    }) = &cli.command
+    {
+        let root = cli
+            .root
+            .as_deref()
+            .context("donjuan-operation requires --root")?;
+        let result = donjuan::project_operation(python, sdk_root, root, *operation)?;
+        std::process::exit(result.code().unwrap_or(1));
+    }
+
     // Determine output mode based on command
     let output_mode = match &cli.command {
         Some(Commands::Mcp { .. }) => output::OutputMode::Mcp,
@@ -1836,6 +1872,8 @@ async fn main() -> Result<()> {
             prompts::run_menu_mode(&mut workspace_manager).await?;
         }
         Some(command) => match command {
+            Commands::DonjuanOperation { .. } => unreachable!("handled before workspace setup"),
+            Commands::Project { .. } => unreachable!("project commands run before workspace setup"),
             Commands::Apps { command } => match command {
                 AppsCommands::Configure {
                     repo,
